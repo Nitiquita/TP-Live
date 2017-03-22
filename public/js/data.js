@@ -14,8 +14,18 @@ $(function(){
 
     //event handlers 
     $("#hotel").on('click', function(event) {
-        // $("#selected hotel").append(`<span`$)
-        var log = $("#hotel").prev("option:selected")
-        console.log(log)
+        var log = $(".hotel").val();
+        $('.selected-hotel').append(`<li>${log}</li>`);
+    })
+
+    $("#restaurant").on('click', function() {
+       var log = $(".restaurants").val();
+       console.log(log);
+       $('.selected-restaurant').append(`<li>${log}</li>`);
+    })
+
+    $("#activity").on('click', function(event) {
+        var log = $(".activities").val();
+        $('.selected-activity').append(`<li>${log}</li>`);
     })
   })
