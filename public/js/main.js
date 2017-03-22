@@ -1,4 +1,4 @@
-$(function initializeMap () {
+var drawMarker = function() {
 
   const fullstackAcademy = new google.maps.LatLng(40.705086, -74.009151);
 
@@ -55,7 +55,7 @@ $(function initializeMap () {
   //   activity: '/images/star-3.png'
   // };
 
-  function drawMarker (type, coords) {
+ var drawMarker = function (type, coords) {
     const latLng = new google.maps.LatLng(coords[0], coords[1]);
     const marker = new google.maps.Marker({
       position: latLng
@@ -69,5 +69,5 @@ $(function initializeMap () {
 
   //
 
-
-});
+return drawMarker;
+}();
