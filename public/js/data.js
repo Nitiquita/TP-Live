@@ -86,33 +86,70 @@
     }
     var $restaurants = $(restaurants)
     for (var i = 0; i < restaurants.length; i++) {
-      $('.restaurants').append(`<option>${restaurants[i].name}<option>`);
+      $('.restaurants').append(`<option data-location = ${restaurants[i].place.location}>${restaurants[i].name}<option>`);
     }
     var $activities = $(activities)
     for (var i = 0; i < activities.length; i++) {
-      $('.activities').append(`<option>${activities[i].name}<option>`);
+      $('.activities').append(`<option data-location = ${activities[i].place.location}>${activities[i].name}<option>`);
     }
 
     //event handlers 
     $("#hotel").on('click', function(event) {
         var log = $(".hotel").val();
-        $('.selected-hotel').append(`<li>${log}</li>`);
-        console.log($(".hotel").children().data())
-        drawMarker('hotel', ($(".hotel").children().data().location))
+        $('.selected-hotel').append(`<span class="title">${log}</span>`);
+     //   $('.selected-hotel').append(`<span class="title" ></span>`)
+        $('.selected-hotel').append(`<button class="btn btn-xs btn-danger remove btn-circle">x</button>`)
+
+        var loc = ($(".hotel").children().data().location).split(',')
+        var locNum = loc.map(function(el){
+          return +el;
+        })
+        drawMarker('hotel', locNum);
     })
 
     $("#restaurant").on('click', function() {
        var log = $(".restaurants").val();
-       console.log(".restaurants");
        $('.selected-restaurant').append(`<li>${log}</li>`);
+        var loc = ($(".restaurants").children().data().location).split(',')
+        var locNum = loc.map(function(el){
+          return +el;
+        })
+        drawMarker('restaurant', locNum);
+
+
     })
 
     $("#activity").on('click', function(event) {
         var log = $(".activities").val();
         $('.selected-activity').append(`<li>${log}</li>`);
+
+        var loc = ($(".activities").children().data().location).split(',')
+        var locNum = loc.map(function(el){
+          return +el;
+        })
+        drawMarker('activity', locNum);
     })
 
   // drawMarker('hotel', [40.705137, -74.007624]);
   // drawMarker('restaurant', [40.705137, -74.013940]);
   // drawMarker('activity', [40.716291, -73.995315]);
+
+
+$(".selected-hotel").on("click", ".remove", function(event) {
+        var log = $(".selected-hotel").children().text();
+        console.log(log)
+        
+    })
+
+$("#remove-restaurant").on('click', function(event) {
+        var log = $(".hotel").val();
+        
+    })
+
+$("#remove-activity").on('click', function(event) {
+        var log = $(".hotel").val();
+        
+    })
+
+
 })

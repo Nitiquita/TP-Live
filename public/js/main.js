@@ -49,17 +49,18 @@ var drawMarker = function() {
     styles: styleArr
   });
 
-  // const iconURLs = {
-  //   hotel: '/images/lodging_0star.png',
-  //   restaurant: '/images/restaurant.png',
-  //   activity: '/images/star-3.png'
-  // };
+  const iconURLs = {
+    hotel: '/images/lodging_0star.png',
+    restaurant: '/images/restaurant.png',
+    activity: '/images/star-3.png'
+  };
 
  var drawMarker = function (type, coords) {
     const latLng = new google.maps.LatLng(coords[0], coords[1]);
     const marker = new google.maps.Marker({
       position: latLng
     });
+
     marker.setMap(currentMap);
   }
 
